@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html ng-app="todoApp">
 <head>
@@ -8,11 +9,11 @@
   <script>
     var todoApp = angular.module('todoApp', []);
     var model = {
-      user: "Adam"
+      user: 'Adam'
     };
 
     todoApp.run(function ($http) {
-      $http.get("todo.json").success(function (data) {
+      $http.get('todo.json', function (data) {
         model.items = data;
       })
     });
@@ -21,7 +22,7 @@
       return function (items, showComplete) {
         var resultArr = [];
         angular.forEach(items, function (item) {
-          if (item.done === false || showComplete === true) {
+          if (item.done === false || showComplete) {
             resultArr.push(item);
           }
         });
@@ -29,8 +30,13 @@
       }
     });
 
-    todoApp.controller("ToDoCtrl", function ($scope) {
+    todoApp.controller('ToDoCtrl', function ($scope) {
+      /**
+       *
+       * @type {{user: string}}
+       */
       $scope.todo = model;
+      $scope.actionText='';
 
       $scope.incompleteCount = function () {
         var count = 0;
@@ -43,13 +49,16 @@
       };
 
       $scope.warningLevel = function () {
-        return $scope.incompleteCount() < 3 ? "label-success" : "label-warning";
+        return $scope.incompleteCount() < 3 ? 'label-success' : 'label-warning';
       };
 
       $scope.addNewItem = function (actionText) {
         $scope.todo.items.push({action: actionText, done: false})
       }
-    })
+
+    });
+
+
   </script>
 </head>
 <body ng-controller="ToDoCtrl">

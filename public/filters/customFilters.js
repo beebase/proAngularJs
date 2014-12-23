@@ -18,7 +18,7 @@ angular.module('customFilters', [])
       }
     };
   })
-  .filter("range", function ($filter) {
+  .filter('range', function ($filter) {
     return function (data, page, size) {
       if (angular.isArray(data) && angular.isNumber(page) && angular.isNumber(size)) {
         var start_index = (page - 1) * size;
@@ -34,7 +34,7 @@ angular.module('customFilters', [])
   })
   .filter('pageCount', function () {
     return function (data, size) {
-      if (angular.isArray(data)) {
+      if (angular.isArray(data) && angular.isNumber(size)) {
         var result = [];
         for (var i = 0; i < Math.ceil(data.length / size); i++) {
           result.push(i);

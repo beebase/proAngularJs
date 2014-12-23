@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>5-15</title>
+  <script src="../lib/angular/angular.js"></script>
+  <script>
+    var myData = {
+      name         : 'Adam',
+      weather      : 'sunny',
+      printMessages: function () {
+        console.log('Hello ' + this.name + ".");
+        console.log('Today is ' + this.weather + '.');
+      }
+    };
+    var myExtendedObject = {
+      city: "London"
+    };
+
+    var x = 10;
+
+    //    extend
+    angular.extend(myExtendedObject, myData);
+    console.log(myExtendedObject.city);
+    myExtendedObject.printMessages();
+
+    //    validity check
+    console.log(angular.isObject(myData));
+    console.log(angular.isObject(x));
+
+    //   for loop objects
+    for (var prop in myData) {
+      console.log("Name : " + prop + " Value: " + myData[prop]);
+    }
+    //   forEach loop objects
+    angular.forEach(myData, function (value, key) {
+      console.log("Name: " + key + " Value: " + value);
+
+//      has property
+      var hasName = "name" in myData;
+      var hasDate = "date" in myData;
+      console.log("HasName: " + hasName);
+      console.log("HasDate: " + hasDate);
+    });
+  </script>
+</head>
+<body>
+
+</body>
+</html>
