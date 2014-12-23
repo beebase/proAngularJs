@@ -6,10 +6,11 @@
   <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap-theme.css"/>
   <script src="lib/angular/angular.js"></script>
   <script>
-    angular.module("sportsStore", ['customFilters'])
+    angular.module("sportsStore", ['customFilters', 'cart'])
   </script>
   <script src="controllers/sportsStore.js"></script>
   <script src="controllers/productListController.js"></script>
+  <script src="components/cart/cart.js"></script>
   <script src="filters/customFilters.js"></script>
 </head>
 <body ng-controller="sportsStoreCtrl">
@@ -17,13 +18,14 @@
 <!--NAVIGATION-->
 <div class="navbar navbar-inverse">
   <a class="navbar-brand" href="#">Sports Store</a>
+  <cart-summary></cart-summary>
 </div>
 
 <!--ALERT PANEL-->
 <div class="alert alert-danger"
      ng-show="data.error">
   Error ({{data.error.status}}). The product data was not loaded.
-  <a href="/index.html" class="alert=link">Click here to try again</a>
+  <a href="index.html" class="alert=link">Click here to try again</a>
 </div>
 
 <ng-include src="'views/productList.html'"></ng-include>
