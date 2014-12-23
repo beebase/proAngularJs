@@ -3,11 +3,14 @@
  */
 'use strict';
 angular.module('sportsStore')
-  .controller('sportsStoreCtrl', function ($scope) {
-    $scope.data = {
-      products: [
-        {name: "product1", description: 'a product', category: "Category", price: 10},
-        {name: "product1", description: 'a product', category: "Category", price: 10}
-      ]
-    };
+  .constant('dataUrl', 'http://localhost:5500/products')
+  .controller('sportsStoreCtrl', function ($scope, $http, dataUrl) {
+    $scope.data = {};
+    $http.get(dataUrl)
+      .success(function (data) {
+        $scope.data.products = data;
+      })
+      .error(function (error) {
+        $scope.data.error = error;
+      });
   });
