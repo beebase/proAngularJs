@@ -58,7 +58,7 @@
     <div class="form-group">
       <label>State</label>
       <input name="state" class="form-control"
-             ng-model="data.shipping.state" required />
+             ng-model="data.shipping.state" required/>
     <span class="error" ng-show="shippingForm.state.$error.required">
         Please enter a state
     </span>
@@ -66,7 +66,7 @@
     <div class="form-group">
       <label>Zip</label>
       <input name="zip" class="form-control"
-             ng-model="data.shipping.zip" required />
+             ng-model="data.shipping.zip" required/>
     <span class="error" ng-show="shippingForm.zip.$error.required">
         Please enter a zip code
     </span>
@@ -74,7 +74,7 @@
     <div class="form-group">
       <label>Country</label>
       <input name="country" class="form-control"
-             ng-model="data.shipping.country" required />
+             ng-model="data.shipping.country" required/>
     <span class="error" ng-show="shippingForm.country.$error.required">
         Please enter a country
     </span>
@@ -83,7 +83,7 @@
     <div class="checkbox">
       <label>
         <input name="giftwrap" type="checkbox"
-               ng-model="data.shipping.giftwrap" />
+               ng-model="data.shipping.giftwrap"/>
         Gift wrap these items
       </label>
     </div>
@@ -91,7 +91,8 @@
 
     <div class="text-center">
       <button class="btn btn-primary"
-              ng-disabled="shippingForm.$invalid">
+              ng-disabled="shippingForm.$invalid"
+              ng-click="sendOrder(data.shipping)">
         Complete order
       </button>
     </div>
