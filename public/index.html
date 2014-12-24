@@ -5,11 +5,32 @@
   <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.css"/>
   <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap-theme.css"/>
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
   <script>
-    angular.module("sportsStore", ['customFilters', 'cart'])
+    angular.module("sportsStore", ['customFilters', 'cart','ngRoute'])
+      .config(function ($routeProvider) {
+        $routeProvider
+          .when('/complete', {
+            templateUrl: '/views/thankYou.html'
+          })
+          .when('/placeorder', {
+            templateUrl: '/views/placeOrder.html'
+          })
+          .when('/checkout', {
+            templateUrl: '/views/checkoutSummary.html'
+          })
+          .when('/products', {
+            templateUrl: '/views/productList.html'
+          })
+          .otherwise({
+            templateUrl: '/views/productList.html'
+          })
+      })
   </script>
-  <script src="controllers/sportsStore.js"></script>
+  <script src="controllers/checkoutControllers.js"></script>
   <script src="controllers/productListController.js"></script>
+  <script src="controllers/sportsStore.js"></script>
+
   <script src="components/cart/cart.js"></script>
   <script src="filters/customFilters.js"></script>
 </head>
@@ -28,7 +49,7 @@
   <a href="index.html" class="alert=link">Click here to try again</a>
 </div>
 
-<ng-include src="'views/productList.html'"></ng-include>
+<ng-view></ng-view>
 
 </body>
 </html>
