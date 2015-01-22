@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+	<title>AngularJS Demo</title>
+	<link href="../lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+	<link href="../lib/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+	<script src="../lib/angular/angular.js"></script>
+	<script src="controller.js"></script>
+	<script src="directives.js"></script>
+	<script src="filters.js"></script>
+	<script src="services.js"></script>
+	<script src="values.js"></script>
+	<script>
+		var myApp = angular.module("exampleApp", [
+			'exampleApp.Controllers',
+			'exampleApp.Directives',
+			'exampleApp.Filters',
+			'exampleApp.Services',
+			'exampleApp.Values']);
+
+		// configs for each module will execute, before the .run functions start
+		myApp.constant("startTime", new Date().toLocaleTimeString());
+		myApp.config(function (startTime) {
+			console.log("2.Main module config: " + startTime );
+		});
+		myApp.run(function (startTime) {
+			console.log("4.Main module run(all): " + startTime);
+		});
+	</script>
+</head>
+<body>
+<div class="panel">
+	<div class="page-header">
+		<h3>AngularJS App</h3>
+	</div>
+	<h4 highlight="Thursday"
+	    ng-controller="dayCtrl">
+		Today is {{ day || "(unknown)" | dayNrToName}} (filtered).
+		{{day}}
+	</h4>
+	<h4 highlight="Friday"
+	    ng-controller="tomorrowCtrl">
+		Tomorrow is {{day || "(unknown)" | dayNrToName}}
+		{{day}}
+	</h4>
+</div>
+
+</body>
+</html>
