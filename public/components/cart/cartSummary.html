@@ -8,12 +8,12 @@
     margin-right : 10px;
   }
 </style>
-
 <div class="navbar-right">
   <div class="navbar-text">
     <b>Your cart:</b>
     {{itemCount()}} item(s),
     {{total() | currency}}
   </div>
-  <a href="#/checkout" class="btn btn-default navbar-btn">Checkout</a>
+  <a class="btn btn-default navbar-btn"
+     href="#/checkout">Checkout</a>
 </div>
