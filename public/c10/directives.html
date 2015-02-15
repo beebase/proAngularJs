@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="exampleApp">
+<head>
+	<title>AngularJS Demo</title>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap-theme.css"/>
+	<script src="../lib/angular/angular.js"></script>
+	<script>
+		angular.module('exampleApp', [])
+			.controller('defaultCtrl', function ($scope) {
+				$scope.data = {};
+				$scope.todos = [
+					{action: "Get groceries", complete: false},
+					{action: "Call plumber", complete: false},
+					{action: "Buy running shoes", complete: true},
+					{action: "Buy flowers", complete: false},
+					{action: "Call family", complete: false}
+				];
+				$scope.viewFile = function () {
+					return $scope.showList ? 'list.html' : 'table.html';
+				};
+				$scope.reportChange = function () {
+					console.log("changed!");
+				};
+				$scope.getInclude = function (value) {
+					switch (value) {
+						case "List" :
+							$scope.includeFile = 'list.html';
+							break;
+						case "List2" :
+							$scope.includeFile = 'list2.html';
+							break;
+						case "List3" :
+							$scope.includeFile = 'list3.html';
+							break;
+					}
+				}
+			})
+	</script>
+	<style>
+		.odd {
+			background : lightblue;
+		}
+
+		.even {
+			background : lightgreen;
+		}
+	</style>
+</head>
+<body ng-controller="defaultCtrl">
+	<div class="panel"
+	     id="todoPanel">
+		<h3 class="panel-header">To Do list</h3>
+		<div class="well">
+			<div class="checkbox">
+				<label>
+					<input ng-model="showList"
+					       type="checkbox">
+					Show List View
+				</label>
+			</div>
+		</div>
+		<ng-include src="viewFile()" onload="reportChange()"></ng-include>
+	</div>
+
+	<hr/>
+
+	<!--ng-switch-->
+	<div class="well">
+		<div class="radio"
+		     ng-repeat="colour in ['None', 'Table', 'List', 'List2', 'List3']">
+			<label>
+				<input ng-checked="$first"
+				       ng-click="getInclude(colour)"
+				       ng-model="data.mode"
+				       type="radio"
+				       value="{{colour}}">
+				{{colour}}
+			</label>
+		</div>
+	</div>
+
+	<!--ng-include inside ng-switch doesn't work-->
+	<div ng-switch on="data.mode">
+		<div ng-switch-when="Table">Table</div>
+		<div ng-switch-when="List">List</div>
+		<div ng-switch-when="List2">List2</div>
+		<div ng-switch-when="List3">List3</div>
+		<div ng-switch-default>Select an option</div>
+	</div>
+
+	<div ng-include="includeFile"></div>
+
+</body>
+
+</html>

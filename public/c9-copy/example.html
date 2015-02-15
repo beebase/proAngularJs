@@ -5,7 +5,7 @@
 	<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap.css"/>
 	<link rel="stylesheet" href="../lib/bootstrap/dist/css/bootstrap-theme.css"/>
 	<script src="../lib/angular/angular.js"></script>
-	<script src="controller.js"></script>
+	<script src="controllers.js"></script>
 	<script src="directives.js"></script>
 	<script src="filters.js"></script>
 	<script src="services.js"></script>
@@ -18,30 +18,19 @@
 			'exampleApp.Services',
 			'exampleApp.Values'
 		]);
-
-		myApp.constant('startTime', new Date().getMilliseconds());
-		myApp.config(function (startTime) {
-			console.log("2.Main module config: " + startTime);
-		});
-		myApp.run(function (startTime) {
-			console.log("4.Main module run: " + startTime);
-		});
-
 	</script>
 </head>
 <body>
 	<div class="panel">
-		<div class="panel-header">
-			<h3>AngularJS App</h3>
+		<div class="panel-heading">
+			 <h3>AngularJHS App</h3>
 		</div>
 		<div class="panel-body">
-			<h4 highlight="Thursday"
-			    ng-controller="dayCtrl">
-				Today is {{day || "(unknown" | dayNrToName}}.
+			<h4 ng-controller="dayCtrl" highlight="Thursday">
+			Today is {{day | dayNrToName }}
 			</h4>
-			<h4 highlight="Friday"
-			    ng-controller="tomorrowCtrl">
-				Tomorrow is {{day || "(unknown)" | dayNrToName}}
+			<h4 ng-controller="tomorrowCtrl" highlight="">
+				Tomorrow is {{day }}
 			</h4>
 		</div>
 	</div>

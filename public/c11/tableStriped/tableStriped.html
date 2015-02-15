@@ -1,0 +1,43 @@
+<style>
+	td > *:first-child {
+		font-weight : bold;
+	}
+</style>
+<div ng-controller="tableStripedCtrl as vm">
+	<div class="row well">
+		<div class="checkbox">
+			<label>
+				<input ng-checked="vm.todos[1].complete"
+				       ng-model="vm.todos[1].complete"
+				       type="checkbox"/>
+				Item 2 is complete
+			</label>
+		</div>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Done (nghide/show hides)</th>
+				<th>Done (ng if removes)</th>
+			</tr>
+		</thead>
+		<tr
+			ng-repeat="item in vm.todos">
+			<!--don't use ng-hide="item.complete" cause this only hides elem and screws striping-->
+			<td>{{$index + 1}}</td>
+			<td>{{item.action}}</td>
+			<td>
+				{{item.complete}}
+				<span ng-hide="item.complete">(Incomplete)</span>
+				<span ng-show="item.complete">(Done)</span>
+			</td>
+			<td>
+				<span ng-if="!item.complete">(Incomplete)</span>
+				<span ng-if="item.complete">(Done)</span>
+			</td>
+		</tr>
+	</table>
+</div>

@@ -1,0 +1,19 @@
+
+tr.Red,
+td.Red,
+tr.odd {
+	background-color : lightcoral;
+}
+
+tr.Green,
+td.Green,
+tr.even {
+	background-color : lightgreen;
+}
+
+tr.Blue,
+td.Blue {
+	background-color : lightblue;
+}
+
+

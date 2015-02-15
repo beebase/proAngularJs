@@ -1,0 +1,31 @@
+<div ng-controller="tableEventsCtrl as vm">
+	<div class="well">
+	<span ng-repeat="color in vm.buttons">
+	    <button class="btn btn-info" ng-click="vm.colorFills.Rows = color">
+		    {{color}}
+	    </button>
+	</span>
+	</div>
+
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Done</th>
+			</tr>
+		</thead>
+		<tr ng-class="vm.colorFills.Rows"
+			ng-repeat="item in vm.todos"
+			ng-mouseenter="vm.handleEvent($event)"
+			ng-mouseleave="vm.handleEvent($event)">
+			<td ng-class="vm.colorFills.Columns">
+				{{$index + 1}}
+			</td>
+			<td>{{item.action}}</td>
+			<td >{{item.complete}}</td>
+		</tr>
+	</table>
+
+	<pre> {{vm.colorFills | json}}</pre>
+</div>

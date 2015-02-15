@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+<html ng-app="exampleApp">
+<head>
+	<title>AngularJS Demo</title>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap-theme.css"/>
+	<link rel="stylesheet"
+	      href="style.css"/>
+	<script src="../lib/angular/angular.js"></script>
+	<script>
+		angular.module('exampleApp', [])
+			.controller('defaultCtrl', function () {
+
+				var vm = this;
+				vm.fileName = "tableStriped/tableStriped.html";
+
+			})
+	</script>
+	<script src="services.js"></script>
+	<script src="tableStriped/tableStriped.js"></script>
+	<script src="rowsColumns/rowsColumns.js"></script>
+	<script src="oddEven/oddEven.js"></script>
+	<script src="tableEvents/tableEvents.js"></script>
+</head>
+<body ng-controller="defaultCtrl as main">
+	<div class="row well">
+		<div class="radio">
+			<label>
+				<input type="radio"
+				       ng-model="main.fileName"
+				       value="tableStriped/tableStriped.html">Striped Table
+			</label>
+			<label>
+				<input type="radio"
+				       ng-model="main.fileName"
+				       value="rowsColumns/rowsColumns.html"> Row and Columns
+			</label>
+			<label>
+				<input type="radio"
+				       ng-model="main.fileName"
+				       value="oddEven/oddEven.html"> Odd
+			</label>
+			<label>
+				<input type="radio"
+				       ng-model="main.fileName"
+				       value="tableEvents/tableEvents.html">table event
+			</label>
+		</div>
+	</div>
+	<div class="panel">
+		<h3 class="panel-header">To Do List</h3>
+		<ng-include src="main.fileName"></ng-include>
+	</div>
+</body>
+
+</html>

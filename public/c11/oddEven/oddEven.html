@@ -1,0 +1,18 @@
+<div ng-controller="oddEvenCtrl as vm">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Done</th>
+			</tr>
+		</thead>
+		<tr ng-class-even="'even'"
+		    ng-class-odd="'odd'"
+		    ng-repeat="item in vm.todos">
+			<td>{{$index + 1}}</td>
+			<td>{{item.action}}</td>
+			<td>{{item.complete}}</td>
+		</tr>
+	</table>
+</div>
