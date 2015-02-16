@@ -1,0 +1,34 @@
+<div ng-controller="rowsColumnsCtrl as vm">
+	<div class="row well">
+		<div class="col-xs-6"
+		     ng-repeat="(key, val) in vm.colorFills">
+			<h4>{{key}}</h4>
+			<div class="radio"
+			     ng-repeat="color in vm.colors">
+				<label>
+					<input ng-model="vm.colorFills[key]"
+					       type="radio"
+					       value="{{color}}">
+					{{color}}
+				</label>
+			</div>
+		</div>
+	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Action</th>
+				<th>Complete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in vm.todos"
+			    ng-class="vm.colorFills.Rows">
+				<td ng-style="{'background-color':vm.colorFills.Columns}">{{$index + 1}}</td>
+				<td>{{item.action}}</td>
+				<td>{{item.complete}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

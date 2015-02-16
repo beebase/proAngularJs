@@ -67,31 +67,6 @@
 
 	<hr/>
 
-	<!--ng-switch-->
-	<div class="well">
-		<div class="radio"
-		     ng-repeat="colour in ['None', 'Table', 'List', 'List2', 'List3']">
-			<label>
-				<input ng-checked="$first"
-				       ng-click="getInclude(colour)"
-				       ng-model="data.mode"
-				       type="radio"
-				       value="{{colour}}">
-				{{colour}}
-			</label>
-		</div>
-	</div>
-
-	<!--ng-include inside ng-switch doesn't work-->
-	<div ng-switch on="data.mode">
-		<div ng-switch-when="Table">Table</div>
-		<div ng-switch-when="List">List</div>
-		<div ng-switch-when="List2">List2</div>
-		<div ng-switch-when="List3">List3</div>
-		<div ng-switch-default>Select an option</div>
-	</div>
-
-	<div ng-include="includeFile"></div>
 
 </body>
 

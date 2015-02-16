@@ -1,0 +1,39 @@
+<style>
+	td > *:first-child {
+		font-weight : bold;
+	}
+</style>
+<div ng-controller="tableStripedCtrl as vm">
+	<div class="row well">
+		<div class="checkbox">
+			<label>
+				<input ng-checked="vm.todos[2].complete"
+				       ng-model="vm.todos[2].complete"
+				       type="checkbox">
+				item 3 = complete
+			</label>
+		</div>
+	</div>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Action</th>
+				<th>Complete(ng-hide/show)</th>
+				<th>Complete(ng-if)</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in vm.todos">
+				<td>{{item.action}}</td>
+				<td>
+					<span ng-hide="item.complete">Pending</span>
+					<span ng-show="item.complete">Completed</span>
+				</td>
+				<td>
+					<span ng-if="!item.complete">Pending</span>
+					<span ng-if="item.complete">Completed</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

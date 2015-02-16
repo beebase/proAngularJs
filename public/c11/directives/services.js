@@ -15,12 +15,14 @@ angular.module("exampleApp")
       colors   : {
         red  : "Red",
         green: "Green",
-        blue: "Blue"
+        blue : "Blue"
       },
       getColors: function (colors) {
         var result = [];
         for (var col in colors) {
-          result.push(colors[col]);
+          if (colors.hasOwnProperty(col)) {
+            result.push(colors[col]);
+          }
         }
         return result;
       }

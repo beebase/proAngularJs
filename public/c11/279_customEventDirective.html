@@ -1,0 +1,31 @@
+<!DOCTYPE html >
+<html ng-app="exampleApp">
+<head>
+	<title>Directives</title>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap.css"/>
+	<link rel="stylesheet"
+	      href="../lib/bootstrap/dist/css/bootstrap-theme.css"/>
+	<script src="../lib/angular/angular.js"></script>
+	<script>
+		angular.module("exampleApp", [])
+			.controller("defaultCtrl", function ($scope, $location) {
+				$scope.message = "Tap Me!";
+			})
+			.directive("tap", function () {
+				return function (scope, elem, attrs) {
+					elem.on("touchstart touched", function () {
+						scope.$apply(attrs["tap"]);
+						console.log(attrs["tap"]);
+					})
+				}
+			})
+	</script>
+</head>
+<body>
+	<div class="panel"
+	     ng-controller="defaultCtrl">
+		<div class="well" tap="message = 'Tapped!'">{{message}}</div>
+	</div>
+
+</body>
